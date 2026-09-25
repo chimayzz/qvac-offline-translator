@@ -1,0 +1,25 @@
+{
+  "name": "qvac-offline-translator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chimayzz/qvac-offline-translator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/chimayzz/qvac-offline-translator/issues"
+  },
+  "homepage": "https://github.com/chimayzz/qvac-offline-translator#readme",
+  "dependencies": {
+    "@qvac/sdk": "^0.20.0"
+  }
+}
