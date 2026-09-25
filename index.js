@@ -6,14 +6,21 @@ import {
 } from "@qvac/sdk";
 
 async function runTranslator() {
-  console.log("=== QVAC Offline Translator ===");
+  console.log("");
+  console.log("╔════════════════════════════════════════════╗");
+  console.log("║          QVAC OFFLINE TRANSLATOR           ║");
+  console.log("║            English → French                ║");
+  console.log("╚════════════════════════════════════════════╝");
+  console.log("");
 
   const sourceText =
     "Hello! Running artificial intelligence locally on your device protects your privacy.";
 
-  console.log(`Original Text (EN): "${sourceText}"\n`);
+  console.log("Original Text (EN):");
+  console.log(`"${sourceText}"`);
+  console.log("");
 
-  console.log("Loading translation model on-device...");
+  console.log("Loading QVAC translation model on-device...");
 
   const modelId = await loadModel({
     modelSrc: BERGAMOT_EN_FR,
@@ -24,33 +31,40 @@ async function runTranslator() {
     }
   });
 
-  console.log("Translation model loaded successfully.");
+  console.log("✓ Translation model loaded successfully.");
+  console.log("");
 
-  console.log("\nTranslating text offline...");
+  console.log("Translating with QVAC on-device...");
+  console.log("");
 
   const result = translate({
-  modelId,
-  text: sourceText,
-  from: "en",
-  to: "fr",
-  modelType: "nmtcpp-translation",
-  stream: false
-});
+    modelId,
+    text: sourceText,
+    from: "en",
+    to: "fr",
+    modelType: "nmtcpp-translation",
+    stream: false
+  });
 
-const translatedText = await result.text;
+  const translatedText = await result.text;
 
-console.log("\n================ RESULT ================");
-console.log(`Translated Text (FR): ${translatedText}`);
-console.log("========================================");
+  console.log("════════════════════ RESULT ════════════════════");
+  console.log("Translated Text (FR):");
+  console.log(`"${translatedText}"`);
+  console.log("════════════════════════════════════════════════");
+  console.log("");
 
   await unloadModel({
     modelId
   });
 
-  console.log("\nModel unloaded successfully.");
+  console.log("✓ Model unloaded successfully.");
+  console.log("");
+  console.log("QVAC offline translation completed.");
 }
 
 runTranslator().catch((error) => {
-  console.error("\nTranslation failed:");
+  console.error("");
+  console.error("✗ Translation failed:");
   console.error(error);
 });
